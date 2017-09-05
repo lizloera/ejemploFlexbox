@@ -1,0 +1,48 @@
+.padre{
+	display: flex;
+	flex-direction: row;
+	/*respeta el ancho de los elementos hijos, si tienes muchos elementos hijos se generan diferentes lineas*/
+	flex-wrap: wrap;
+	text-align: center;
+	padding: 10px; 
+
+}
+.header, .articulo, .izquierda, .derecha, .footer{
+	/*especifica el factor de crecimiento de un elemento flexible*/
+	flex-grow:1;
+	/*con esta propiedad podemos especificar el tamaño inicial que tendra un elemento hijo*/
+	flex-basis:100%;
+	padding: 10px;
+
+}
+/*cuando tenga 600px o mas , tomara los siguientes estilos de css*/
+@media all and (min-width: 600px){
+	.aside{
+		/*el 1 1 auto , toma las propiedades de flex-grow, flex-shrink(si utilizamos valor 0 el elemento
+		hijo no podra hacerse mas pequeño que su ancho establecido), y flex-basis*/
+		flex: 1 1 auto;
+	}
+}
+@media all and (min-width: 800px){
+	/*el grow tendra el doble de ancho del izquierda y derecho*/
+	.articulo{flex:2 0;}
+	.izquierda{order: 1;}
+	.articulo{order: 2;}
+	.derecha{order: 3;}
+	.footer{order: 4;}
+}
+.header{
+	background: #581845;
+}
+.articulo{
+	background: blue;
+}
+.izquierda{
+	background: red;
+}
+.derecha{
+	background: yellow;
+}
+.footer{
+	background: green;
+}
